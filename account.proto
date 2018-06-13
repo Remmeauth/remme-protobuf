@@ -33,7 +33,7 @@ message GenesisPayload {
 
 message Account {
     uint64 balance = 1;
-    repeated string certificates = 2;
+    repeated string pub_keys = 2;
 }
 
 message GenesisStatus {
