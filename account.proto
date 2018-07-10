@@ -33,7 +33,7 @@ message GenesisPayload {
 
 message Account {
     uint64 balance = 1;
-    uint64 pub_key_nonce = 2;
+    uint64 pub_key_serial_number = 2;
 }
 
 message PubKeyAccount {
