@@ -33,7 +33,11 @@ message GenesisPayload {
 
 message Account {
     uint64 balance = 1;
-    repeated string pub_keys = 2;
+    uint64 pub_key_serial_number = 2;
+}
+
+message PubKeyAccount {
+    string address = 1;
 }
 
 message GenesisStatus {
