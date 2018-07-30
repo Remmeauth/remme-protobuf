@@ -56,6 +56,7 @@ message AtomicSwapClosePayload {
 message AtomicSwapInfo {
     bool is_closed = 1; // if the swap is closed and unavailable for actions upon it
     bool is_approved = 11; // if Alice approved the swap, initiated by herself
+    bool is_expired = 13; // indicator weather a swap has been expired
     string sender_address = 2; // Address of the agent on the REMchain side soliciting the exchange
     string sender_address_non_local = 12; // Address to receive arranged equivalent on the other chain (non local one)
     string receiver_address = 3; // REMchain agent to receive funds
