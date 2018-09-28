@@ -23,30 +23,27 @@ message PubKeyMethod {
     }
 }
 
-enum SignatureType {
-    RSA = 0;
-    // currently supports only SECP256K1
-    ECDSA = 1;
-    // currently supports only Ed25519 instance
-    EdDSA = 2;
-}
-
-enum RSASignaturePadding {
-    PSS = 0;
-    OAEP = 1;
-    PKCS1v15 = 2;
-}
-
 
 message NewPubKeyPayload {
+    enum PubKeyType {
+        RSA = 0;
+        // currently supports only SECP256K1
+        ECDSA = 1;
+        // currently supports only Ed25519 instance
+        EdDSA = 2;
+    }
+
+    enum RSASignaturePadding {
+        PSS = 0;
+        OAEP = 1;
+        PKCS1v15 = 2;
+    }
+
     enum EntityType {
         PERSONAL = 0;
         SERVER = 1;
     }
 
-    enum PubKeyType {
-        RSA = 0;
-    }
     // PEM Encoded public key
     string public_key = 1;
     PubKeyType public_key_type = 2;
@@ -59,8 +56,7 @@ message NewPubKeyPayload {
     uint32 valid_from = 6;
     // UNIX time when validity ends
     uint32 valid_to = 7;
-    SignatureType signature_type = 8;
-    RSASignaturePadding rsa_signature_padding = 9;
+    RSASignaturePadding rsa_signature_padding = 8;
 }
 
 message RevokePubKeyPayload {
@@ -74,6 +70,4 @@ message PubKeyStorage {
     // indicates if this key was revoked
     NewPubKeyPayload payload = 2;
     bool revoked = 3;
-    SignatureType signature_type = 4;
-    RSASignaturePadding rsa_signature_padding = 5;
 }
