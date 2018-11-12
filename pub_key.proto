@@ -34,38 +34,22 @@ message NewPubKeyPayload {
     }
 
     enum RSASignaturePadding {
-        PSS = 0;
-        OAEP = 1;
+        EMPTY = 0;
+        PSS = 1;
         PKCS1v15 = 2;
-    }
-
-    enum EntityType {
-        PERSONAL = 0;
-        SERVER = 1;
-    }
-
-    enum HashType {
-        SHA1 = 0;
-        SHA224 = 1;
-        SHA256 = 2;
-        SHA384 = 3;
-        SHA512 = 4;
     }
 
     // PEM Encoded public key
     string public_key = 1;
     PubKeyType public_key_type = 2;
-    // For future ACME support(Now only Personal)
-    EntityType entity_type = 3;
     // hash of PEM encoded public key of certificate
-    string entity_hash = 4;
-    string entity_hash_signature = 5;
+    string entity_hash = 3;
+    string entity_hash_signature = 4;
     // UNIX time when validity begins
-    uint32 valid_from = 6;
+    uint32 valid_from = 5;
     // UNIX time when validity ends
-    uint32 valid_to = 7;
-    RSASignaturePadding rsa_signature_padding = 8;
-    HashType hash_type = 9;
+    uint32 valid_to = 6;
+    RSASignaturePadding rsa_signature_padding = 7;
 }
 
 message RevokePubKeyPayload {
