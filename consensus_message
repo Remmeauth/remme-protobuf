@@ -22,22 +22,22 @@ message ConsensusMessagePayload {
   // header_signature of block that was proposal
   string proposal_id = 2;
   
-  // address of node that propose this header_signature
+  // address of node in hex format (Account family name) that propose this header_signature
   string voter_id = 3;
 }
 
 message ConsensusMessage {
-// All kind of consensus message
+// All kind of consensus messages
   enum Type {
-      VALUE_PROPOSAL = 0;
-      SOFT_VOTES = 1;
-      CERT_VOTES = 2;
-      NEXT_VOTES = 3;
+      VALUE_PROPOSAL = 1;
+      SOFT_VOTE = 2;
+      CERT_VOTES = 3;
+      NEXT_VOTES = 4;
   }
   
   // type of consensus message
   Type type = 1;
   
   // payload of message
-  MessagePayload payload = 0;
+  MessagePayload payload = 2;
 }
