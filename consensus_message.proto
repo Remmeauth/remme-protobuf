@@ -31,13 +31,13 @@ message ConsensusMessage {
   enum Type {
       VALUE_PROPOSAL = 1;
       SOFT_VOTE = 2;
-      CERT_VOTES = 3;
-      NEXT_VOTES = 4;
+      CERT_VOTE = 3;
+      NEXT_VOTE = 4;
   }
   
   // type of consensus message
   Type type = 1;
   
   // payload of message
-  MessagePayload payload = 2;
+  ConsensusMessagePayload payload = 2;
 }
