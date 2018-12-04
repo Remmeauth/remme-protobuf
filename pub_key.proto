@@ -24,26 +24,47 @@ message PubKeyMethod {
 }
 
 message NewPubKeyPayload {
-    enum EntityType {
-        PERSONAL = 0;
-        SERVER = 1;
+    enum HashingAlgorithm {
+        SHA256 = 0;
+        SHA512 = 1;
     }
 
-    enum PubKeyType {
-        RSA = 0;
+    message RSAConfiguration {
+        enum Padding {
+            PSS = 0;
+            PKCS1v15 = 1;
+        }
+
+        bytes key = 1;
+        Padding padding = 2;
     }
-    // PEM Encoded public key
-    string public_key = 1;
-    PubKeyType public_key_type = 2;
-    // For future ACME support(Now only Personal)
-    EntityType entity_type = 3;
-    // hash of PEM encoded public key of certificate
-    string entity_hash = 4;
-    string entity_hash_signature = 5;
-    // UNIX time when validity begins
-    uint32 valid_from = 6;
-    // UNIX time when validity ends
-    uint32 valid_to = 7;
+
+    message ECDSAConfiguration {
+        enum EC {
+            SECP256k1 = 0;
+        }
+
+        bytes key = 1;
+        EC ec = 2;
+    }
+
+    message Ed25519Configuration {
+        bytes key = 1;
+    }
+
+    HashingAlgorithm hashing_algorithm = 1;
+
+    bytes entity_hash = 2;
+    bytes entity_hash_signature = 3;
+
+    uint32 valid_from = 4;
+    uint32 valid_to = 5;
+    
+    oneof configuration {
+        RSAConfiguration rsa = 6;
+        ECDSAConfiguration ecdsa = 7;
+        Ed25519Configuration ed25519 = 8;
+    }
 }
 
 message RevokePubKeyPayload {
@@ -56,5 +77,5 @@ message PubKeyStorage {
     string owner = 1;
     // indicates if this key was revoked
     NewPubKeyPayload payload = 2;
-    bool revoked = 3;
+    bool is_revoked = 3;
 }
