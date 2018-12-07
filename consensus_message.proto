@@ -29,10 +29,10 @@ message ConsensusMessagePayload {
 message ConsensusMessage {
 // All kind of consensus messages
   enum Type {
-      VALUE_PROPOSAL = 1;
-      SOFT_VOTE = 2;
-      CERT_VOTE = 3;
-      NEXT_VOTE = 4;
+      VALUE_PROPOSAL = 0;
+      SOFT_VOTE = 1;
+      CERT_VOTE = 2;
+      NEXT_VOTE = 3;
   }
   
   // type of consensus message
