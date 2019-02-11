@@ -22,11 +22,11 @@ message ConsensusMessagePayload {
   // header_signature of block that was proposal
   string proposal_id = 2;
   
-  // address of node in hex format (Account family name) that propose this header_signature
+  // public_key of node in hex format that propose this header_signature
   string voter_id = 3;
 }
 
-message ConsensusMessage {
+message ConsensusMessageHeader {
 // All kind of consensus messages
   enum Type {
       VALUE_PROPOSAL = 0;
@@ -40,4 +40,15 @@ message ConsensusMessage {
   
   // payload of message
   ConsensusMessagePayload payload = 2;
+}
+
+message ConsensusMessage {
+   ConsensusMessageHeader header = 1;
+   
+   // Signature of header by voter private key
+   bytes header_signature = 2;
+}
+
+message ConsensusSeal {
+  repeated ConsensusMessage previous_cert_votes = 2;
 }
