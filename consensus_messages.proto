@@ -54,5 +54,5 @@ message ConsensusSeal {
 }
 
 message ConsensusSealRequest {
-  string block_id = 1;
+  bytes block_id = 1;
 }
