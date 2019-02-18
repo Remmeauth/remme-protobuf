@@ -52,3 +52,7 @@ message ConsensusMessage {
 message ConsensusSeal {
   repeated ConsensusMessage previous_cert_votes = 2;
 }
+
+message ConsensusSealRequest {
+  string block_id = 1;
+}
