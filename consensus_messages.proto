@@ -20,10 +20,10 @@ message ConsensusMessagePayload {
   uint64 period = 1;
   
   // header_signature of block that was proposal
-  string proposal_id = 2;
+  bytes proposal_id = 2;
   
   // public_key of node in hex format that propose this header_signature
-  string voter_id = 3;
+  bytes voter_id = 3;
 }
 
 message ConsensusMessageHeader {
