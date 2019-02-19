@@ -38,15 +38,9 @@ message ConsensusMessage {
     ConsensusMessagePayload payload = 2;
 }
 
-message SignedConsensusMessageHeader {
-    bytes signer_public_key = 1;
-    bytes message_sha512 = 2;
-}
-
 message SignedConsensusMessage {
-    SignedConsensusMessageHeader header = 1;
-    bytes header_signature = 2;
-    ConsensusMessage message = 3;
+    bytes message_signature = 1;
+    ConsensusMessage message = 2;
 }
 
 message ConsensusSeal {
