@@ -16,43 +16,43 @@
 syntax = "proto3";
 
 message ConsensusMessagePayload {
-  // period of consensus loop
-  uint64 period = 1;
-  
-  // header_signature of block that was proposal
-  bytes proposal_id = 2;
-  
-  // public_key of node in hex format that propose this header_signature
-  bytes voter_id = 3;
-}
-
-message ConsensusMessageHeader {
-// All kind of consensus messages
-  enum Type {
-      VALUE_PROPOSAL = 0;
-      SOFT_VOTE = 1;
-      CERT_VOTE = 2;
-      NEXT_VOTE = 3;
-  }
-  
-  // type of consensus message
-  Type type = 1;
-  
-  // payload of message
-  ConsensusMessagePayload payload = 2;
+    // period of consensus loop
+    uint64 period = 1;
+    // header_signature of block that was proposal
+    bytes proposal_id = 2;
+    // public_key of node in hex format that propose this header_signature
+    bytes voter_id = 3;
 }
 
 message ConsensusMessage {
-   ConsensusMessageHeader header = 1;
-   
-   // Signature of header by voter private key
-   bytes header_signature = 2;
+    // All kind of consensus messages
+    enum Type {
+        VALUE_PROPOSAL = 0;
+        SOFT_VOTE = 1;
+        CERT_VOTE = 2;
+        NEXT_VOTE = 3;
+    }
+    // type of consensus message
+    Type type = 1;
+    // payload of message
+    ConsensusMessagePayload payload = 2;
+}
+
+message SignedConsensusMessageHeader {
+    bytes signer_public_key = 1;
+    bytes message_sha512 = 2;
+}
+
+message SignedConsensusMessage {
+    SignedConsensusMessageHeader header = 1;
+    bytes header_signature = 2;
+    ConsensusMessage message = 3;
 }
 
 message ConsensusSeal {
-  repeated ConsensusMessage previous_cert_votes = 2;
+    repeated ConsensusMessage previous_cert_votes = 2;
 }
 
 message ConsensusSealRequest {
-  bytes block_id = 1;
+    bytes block_id = 1;
 }
