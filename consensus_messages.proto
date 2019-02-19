@@ -44,7 +44,7 @@ message SignedConsensusMessage {
 }
 
 message ConsensusSeal {
-    repeated ConsensusMessage previous_cert_votes = 2;
+    repeated SignedConsensusMessage previous_cert_votes = 1;
 }
 
 message ConsensusSealRequest {
