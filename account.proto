@@ -29,6 +29,14 @@ message TransferPayload {
 
 message GenesisPayload {
     uint64 total_supply = 1;
+    uint32 committee_size = 2;
+    uint32 blockchain_size = 3;
+    float obligatory_payment = 4;
+    float transaction_fee = 5;
+    float blockchain_tax = 6;
+    uint64 minimum_stake = 7;
+    uint64 minimum_bet = 8;
+    float lambdas = 9;
 }
 
 message Account {
