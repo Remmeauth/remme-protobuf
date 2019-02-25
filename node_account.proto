@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+message NodeAccount {
+    enum NodeState {
+        NEW = 0;
+        OPENED = 1;
+        CLOSED = 2;
+    }
+    NodeState node_state = 1;
+
+    uint64 balance = 4;
+
+    message Reputational {
+        uint64 frozen = 1;
+        uint64 unfrozen = 2;
+    }
+}
+
+message NodeAccountMethod {
+    enum Method {
+        TRANSFER_FROM_FROZEN_TO_UNFROZEN = 0;
+        TRANSFER_FROM_UNFROZEN_TO_OPERATIONAL = 1;
+        INITIALIZE_MASTERNODE = 2;
+        CLOSE_MASTERNODE = 3;
+    }
+}
+
+message NodeAccountInternalTransferPayload {
+    uint64 value = 1;
+}
