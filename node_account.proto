@@ -29,7 +29,7 @@ message NodeAccount {
         uint64 frozen = 1;
         uint64 unfrozen = 2;
     }
-    repeated Reputational reputation = 3;
+    Reputational reputation = 3;
 }
 
 message NodeAccountMethod {
