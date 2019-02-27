@@ -23,13 +23,14 @@ message NodeAccount {
     }
     NodeState node_state = 1;
 
-    uint64 balance = 2;
+    uint64 balance = 4;
 
-    message Reputational {
+    message Reputation {
         uint64 frozen = 1;
         uint64 unfrozen = 2;
     }
-    Reputational reputation = 3;
+
+    Reputation reputation = 5;
 }
 
 message NodeAccountMethod {
@@ -44,3 +45,7 @@ message NodeAccountMethod {
 message NodeAccountInternalTransferPayload {
     uint64 value = 1;
 }
+
+message CloseMasternodePayload {
+}
+
