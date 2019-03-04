@@ -23,14 +23,14 @@ message NodeAccount {
     }
     NodeState node_state = 1;
 
-    uint64 balance = 4;
+    uint64 balance = 2;
 
     message Reputation {
         uint64 frozen = 1;
         uint64 unfrozen = 2;
     }
 
-    Reputation reputation = 5;
+    Reputation reputation = 3;
 }
 
 message NodeAccountMethod {
