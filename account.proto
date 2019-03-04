@@ -23,8 +23,15 @@ message AccountMethod {
 }
 
 message TransferPayload {
-    string address_to = 1;
-    uint64 value = 2;
+    enum SenderAccountType {
+        ACCOUNT = 0;
+        NODE_ACCOUNT = 1;
+    }
+
+    SenderAccountType sender_account_type = 1;
+    
+    string address_to = 2;
+    uint64 value = 3;
 }
 
 message GenesisPayload {
