@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "consensus_messages.proto"
+
+message ClientSealRequest {
+  bytes block_id = 1;
+}
+
+message ClientSealResponse {
+  enum Status {
+          STATUS_UNSET = 0;
+          OK = 1;
+          INTERNAL_ERROR = 2;
+          NO_RESOURCE = 3;
+          INVALID_ID = 4;
+      }
+  Status status = 1;
+  repeated SignedConsensusMessage cert_votes = 1;
+}
