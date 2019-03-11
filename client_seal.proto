@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "consensus_messages.proto"
+import "consensus_messages.proto";
 
 // Message for request about seal. You should provide block_id as bytes for getting seal about this block.
 message ClientSealRequest {
@@ -11,16 +11,16 @@ message ClientSealRequest {
 message ClientSealResponse {
     enum Status {
         // If all ok.
-        OK = 1;
+        OK = 0;
         // If something occurs on server
-        INTERNAL_ERROR = 2;
+        INTERNAL_ERROR = 1;
         // If we don't have seal for this block
-        NO_RESOURCE = 3;
+        NO_RESOURCE = 2;
         // If ID is invalid
-        INVALID_ID = 4;
+        INVALID_ID = 3;
     }
     Status status = 1;
     
     // cert_votes for requested block_id
-    repeated SignedConsensusMessage cert_votes = 1;
+    repeated SignedConsensusMessage cert_votes = 2;
 }
