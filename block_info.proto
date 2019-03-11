@@ -27,9 +27,12 @@ message BlockInfo {
     string header_signature = 4;
     // Approximately when this block was committed, as a Unix UTC timestamp
     uint64 timestamp = 5;
+    // Oldest block that builds by the node and under than 12 month
     uint64 node_oldest_block_id = 6;
+    // Sum of swap, transfer, pub key commissions and obligatory payment, node bet
     uint64 block_cost = 7;
-    float omega = 8;
+    // The frozen reward for block and sum of omega past from blocks that build node and under than 12 month
+    uint64 omega = 8;
 }
 
 message BlockInfoConfig {

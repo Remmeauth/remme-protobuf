@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "consensus_messages.proto";
+
+// Message for request about seal.
+message ClientSealRequest {
+}
+
+// Message for response about seal. You will receive cert_votes as SignedConsensusMessage and status of this response.
+message ClientSealResponse {
+    enum Status {
+        // If all ok.
+        OK = 0;
+        // If something occurs on server
+        INTERNAL_ERROR = 1;
+        // If we don't have seal for this block
+        NO_RESOURCE = 2;
+    }
+    Status status = 1;
+    
+    // cert_votes for requested block_id
+    repeated SignedConsensusMessage cert_votes = 2;
+}
