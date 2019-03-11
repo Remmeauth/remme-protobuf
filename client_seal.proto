@@ -8,12 +8,12 @@ message ClientSealRequest {
 
 message ClientSealResponse {
   enum Status {
-          STATUS_UNSET = 0;
-          OK = 1;
-          INTERNAL_ERROR = 2;
-          NO_RESOURCE = 3;
-          INVALID_ID = 4;
-      }
+      STATUS_UNSET = 0;
+      OK = 1;
+      INTERNAL_ERROR = 2;
+      NO_RESOURCE = 3;
+      INVALID_ID = 4;
+  }
   Status status = 1;
   repeated SignedConsensusMessage cert_votes = 1;
 }
