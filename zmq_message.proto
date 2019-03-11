@@ -1,14 +1,8 @@
 syntax = "proto3";
 
-// A list of messages to be transmitted together.
-message MessageList {
-    repeated Message messages = 1;
-}
-
 // The message passed between the validator and client, containing the
 // header fields and content.
 message Message {
-
     enum MessageType {
         // Request for get seal for given block_id
         CLIENT_SEAL_REQUEST = 0;
