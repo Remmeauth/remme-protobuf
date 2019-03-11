@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+// The message passed between the validator and client, containing the
+// header fields and content.
+message Message {
+    enum MessageType {
+        // Request for get seal for given block_id
+        CLIENT_SEAL_REQUEST = 0;
+        // Response for CLIENT_SEAL_RESPONSE
+        CLIENT_SEAL_RESPONSE = 1;
+    }
+    
+    // The type of message, used to determine how to 'route' the message
+    // to the appropriate handler as well as how to deserialize the
+    // content.
+    MessageType message_type = 1;
+
+    // The identifier used to correlate response messages to their related
+    // request messages.  correlation_id should be set to a random string
+    // for messages which are not responses to previously sent messages.  For
+    // response messages, correlation_id should be set to the same string as
+    // contained in the request message.
+    string correlation_id = 2;
+
+    // The content of the message, defined by message_type.  In many
+    // cases, this data has been serialized with Protocol Buffers or
+    // CBOR.
+    bytes content = 3;
+}
