@@ -3,7 +3,7 @@ syntax = "proto3";
 // Return if error occurs
 message MessageError {
     string description = 1;
-    string code = 2;
+    uint64 code = 2;
 }
 
 // The message passed between the validator and client, containing the
