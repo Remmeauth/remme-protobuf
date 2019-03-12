@@ -1,5 +1,11 @@
 syntax = "proto3";
 
+// Return if error occurs
+message MessageError {
+    string description = 1;
+    string code = 2;
+}
+
 // The message passed between the validator and client, containing the
 // header fields and content.
 message Message {
@@ -8,6 +14,8 @@ message Message {
         CLIENT_SEAL_REQUEST = 0;
         // Response for CLIENT_SEAL_RESPONSE
         CLIENT_SEAL_RESPONSE = 1;
+        // Response for error
+        INVALID_MESSAGE = 2;
     }
     
     // The type of message, used to determine how to 'route' the message
