@@ -27,6 +27,9 @@ message BlockInfo {
     string header_signature = 4;
     // Approximately when this block was committed, as a Unix UTC timestamp
     uint64 timestamp = 5;
+    uint64 node_oldest_block_id = 6;
+    uint64 block_cost = 7;
+    float omega = 8;
 }
 
 message BlockInfoConfig {
