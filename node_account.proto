@@ -15,34 +15,37 @@
 
 syntax = "proto3";
 
-message AccountMethod {
+message NodeAccount {
+    enum NodeState {
+        NEW = 0;
+        OPENED = 1;
+        CLOSED = 2;
+    }
+    NodeState node_state = 1;
+
+    uint64 balance = 2;
+
+    message Reputation {
+        uint64 frozen = 1;
+        uint64 unfrozen = 2;
+    }
+
+    Reputation reputation = 3;
+}
+
+message NodeAccountMethod {
     enum Method {
-        TRANSFER = 0;
-        GENESIS = 1;
+        TRANSFER_FROM_FROZEN_TO_UNFROZEN = 0;
+        TRANSFER_FROM_UNFROZEN_TO_OPERATIONAL = 1;
+        INITIALIZE_MASTERNODE = 2;
+        CLOSE_MASTERNODE = 3;
     }
 }
 
-message TransferPayload {
-    enum SenderAccountType {
-        ACCOUNT = 0;
-        NODE_ACCOUNT = 1;
-    }
-
-    SenderAccountType sender_account_type = 1;
-    
-    string address_to = 2;
-    uint64 value = 3;
+message NodeAccountInternalTransferPayload {
+    uint64 value = 1;
 }
 
-message GenesisPayload {
-    uint64 total_supply = 1;
+message CloseMasternodePayload {
 }
 
-message Account {
-    uint64 balance = 1;
-    repeated string pub_keys = 2;
-}
-
-message GenesisStatus {
-    bool status = 1;
-}
