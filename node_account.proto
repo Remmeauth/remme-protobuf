@@ -31,6 +31,11 @@ message NodeAccount {
     }
 
     Reputation reputation = 3;
+    oneof bet {
+        uint64 fixed_amount = 4;
+        bool min = 5;
+        bool max = 6;
+    }
 }
 
 message NodeAccountMethod {
@@ -39,6 +44,8 @@ message NodeAccountMethod {
         TRANSFER_FROM_UNFROZEN_TO_OPERATIONAL = 1;
         INITIALIZE_MASTERNODE = 2;
         CLOSE_MASTERNODE = 3;
+        SET_BET = 4;
+        DO_BET = 5;
     }
 }
 
@@ -49,3 +56,10 @@ message NodeAccountInternalTransferPayload {
 message CloseMasternodePayload {
 }
 
+message SetBetPayload {
+    oneof bet {
+        uint64 fixed_amount = 4;
+        bool min = 5;
+        bool max = 6;
+    }
+}
