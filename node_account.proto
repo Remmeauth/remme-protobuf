@@ -33,12 +33,17 @@ message NodeAccount {
     Reputation reputation = 3;
 }
 
+message NodeState {
+    repeated string master_nodes = 1;
+}
+
 message NodeAccountMethod {
     enum Method {
         TRANSFER_FROM_FROZEN_TO_UNFROZEN = 0;
         TRANSFER_FROM_UNFROZEN_TO_OPERATIONAL = 1;
         INITIALIZE_MASTERNODE = 2;
         CLOSE_MASTERNODE = 3;
+        GENESIS_NODE = 4;
     }
 }
 
