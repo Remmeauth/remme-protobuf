@@ -58,8 +58,8 @@ message CloseMasternodePayload {
 
 message SetBetPayload {
     oneof bet {
-        uint64 fixed_amount = 4;
-        bool min = 5;
-        bool max = 6;
+        uint64 fixed_amount = 1;
+        bool min = 2;
+        bool max = 3;
     }
 }
