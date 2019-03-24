@@ -13,9 +13,9 @@ message ConsensusBet {
  
 message ConsensusAccount {
     // obligatory payments of all participants of consensus
-    uint64 obligatory_payments = 2;
+    uint64 obligatory_payments = 1;
     // all fees and payments in block
-    uint64 block_cost = 3;
+    uint64 block_cost = 2;
     // all bets (for now only 1 should be)
-    repeated ConsensusBet bets = 4;   
+    repeated ConsensusBet bets = 3;   
 }
