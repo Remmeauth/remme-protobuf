@@ -1,0 +1,21 @@
+message ConsensusAccountMethod {
+    enum Method {
+        SEND_REWARD = 0;
+    }
+}
+
+message ConsensusBet {
+    // address of node that send and commit allowance transaction
+    string address = 1;
+    // allowed value
+    uint64 value = 2;
+}
+ 
+message ConsensusAccount {
+    // obligatory payments of all participants of consensus
+    uint64 obligatory_payments = 1;
+    // all fees and payments in block
+    uint64 block_cost = 2;
+    // all bets (for now only 1 should be)
+    repeated ConsensusBet bets = 3;   
+}
