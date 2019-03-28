@@ -16,14 +16,14 @@
 syntax = "proto3";
 
 message NodeAccount {
+    uint64 balance = 1;
+
     enum NodeState {
         NEW = 0;
         OPENED = 1;
         CLOSED = 2;
     }
-    NodeState node_state = 1;
-
-    uint64 balance = 2;
+    NodeState node_state = 2;
 
     message Reputation {
         uint64 frozen = 1;
