@@ -58,9 +58,6 @@ message NodeAccountInternalTransferPayload {
     uint64 value = 1;
 }
 
-message CloseMasternodePayload {
-}
-
 message SetBetPayload {
     oneof bet {
         uint64 fixed_amount = 1;
