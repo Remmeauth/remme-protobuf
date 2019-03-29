@@ -18,6 +18,7 @@ syntax = "proto3";
 message ConsensusAccountMethod {
     enum Method {
         SEND_REWARD = 0;
+        GENESIS = 1;
     }
 }
 
