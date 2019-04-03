@@ -32,7 +32,7 @@ message NodeAccount {
 
     Reputation reputation = 3;
     oneof bet {
-        uint64 fixed_amount = 4;
+        uint32 fixed_amount = 4;
         bool min = 5;
         bool max = 6;
     }
@@ -60,7 +60,7 @@ message NodeAccountInternalTransferPayload {
 
 message SetBetPayload {
     oneof bet {
-        uint64 fixed_amount = 1;
+        float fixed_amount = 1;
         bool min = 2;
         bool max = 3;
     }
