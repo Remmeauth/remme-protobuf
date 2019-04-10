@@ -15,6 +15,18 @@
 
 syntax = "proto3";
 
+message ShareInfo {
+    // prev block number before share distribution
+    uint64 block_num = 1;
+    // share which is used for frost (percent * div factor)
+    uint64 frozen_share = 2;
+    uint64 reward = 3;
+    // timestamp of prev block
+    uint64 block_timestamp = 4;
+    // months that were defrosted (from 1 to 12, 12 not need to defrost)
+    uint32 defrost_months = 5;
+}
+
 message NodeAccount {
     uint64 balance = 1;
 
@@ -36,6 +48,9 @@ message NodeAccount {
         bool min = 5;
         bool max = 6;
     }
+    // latest time where frozen balance was defrosted on user demand
+    uint64 last_defrost_timestamp = 7;
+    repeated ShareInfo shares = 8;
 }
 
 message NodeState {
