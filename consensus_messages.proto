@@ -50,3 +50,8 @@ message ConsensusSeal {
 message ConsensusSealRequest {
     bytes block_id = 1;
 }
+
+message ConsensusCatchUpMessage {
+    repeated bytes block_in_progress = 1;
+    repeated SignedConsensusMessage message_log = 2;
+}
