@@ -32,7 +32,6 @@ message AtomicSwapInitPayload {
     string swap_id = 3; // Swap unique id
     string secret_lock_by_solicitor = 4; // A secret lock, provided during initialisation, only if REMchain side is a solicitor (non initiator)
     string email_address_encrypted_by_initiator = 5; // An email address provided by swap initiator (Alice) to be notified of the next step
-    uint32 created_at = 6; // Creation date in a timestamp format
 }
 
 message AtomicSwapApprovePayload {
