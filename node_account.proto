@@ -66,6 +66,7 @@ message NodeAccountMethod {
         INITIALIZE_NODE = 4;
         SET_BET = 5;
         DO_BET = 6;
+        GENESIS = 7;
     }
 }
 
